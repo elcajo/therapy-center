@@ -2,11 +2,13 @@ import React from 'react';
 import DataCard from './DataCard';
 
 const TeacherCardList = ( {teachers} ) => {
-
+    if(false){
+		throw new Error('Nooooo');
+	}
     return (
         <div>
             {
-                teachers.map((user, i)=>{
+                teachers.map((teacher, i)=>{
                     return <DataCard key={i} 
                     tch_id={teachers[i].tch_id} 
                     imgfile={teachers[i].imgfile} 
@@ -16,7 +18,8 @@ const TeacherCardList = ( {teachers} ) => {
                 })
             }
         </div>
-    )
+    );
 }
+
 
 export default TeacherCardList

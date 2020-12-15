@@ -4,7 +4,7 @@ import React from 'react'
 import TextField from '@material-ui/core/TextField';
 import { useStyles } from '../index';
 
-const SearchBox = ({ searchfield, searchChange }) => {
+const SearchBox = ({ searchField, searchChange }) => {
     const classes = {... useStyles() };
 
 

@@ -1,9 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createLogger } from 'redux-logger';
 import App from './App';
 import { makeStyles, ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import { searchTeachers, requestTeachers } from './reducers';
+import thunkMiddleware from 'redux-thunk';
 
+const logger = createLogger();
+const rootReducer = combineReducers({searchTeachers, requestTeachers})
+const store = createStore(rootReducer, applyMiddleware(thunkMiddleware, logger))
 
 
 export const useStyles = makeStyles((theme) => ({
@@ -131,9 +139,11 @@ const theme = createMuiTheme({
 
 
 ReactDOM.render(
+    <Provider store={store}>
     <ThemeProvider theme = {theme}>
     <CssBaseline />
     <App />
-    </ThemeProvider>,
+    </ThemeProvider>
+    </Provider>,
   document.getElementById('root')
 );
